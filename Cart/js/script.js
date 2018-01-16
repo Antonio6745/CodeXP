@@ -3,7 +3,7 @@ var produtos = [
     {//0
         codigo : 50,
         imagem : {
-            src     : 'img/camiseta.png',
+            src     : './img/camiseta.png',
             alt     : "texto alternativo",
             title   : "título da imagem"
         },
@@ -15,7 +15,7 @@ var produtos = [
     {//1
         codigo : 99,
         imagem : {
-            src     : 'img/camiseta.png',
+            src     : './img/camiseta.png',
             alt     : "texto alternativo",
             title   : "título da imagem"
         },
@@ -27,7 +27,7 @@ var produtos = [
     {//2
         codigo : 287,
         imagem : {
-            src     : 'img/camiseta.png',
+            src     : './img/camiseta.png',
             alt     : "texto alternativo",
             title   : "título da imagem"
         },
@@ -38,6 +38,17 @@ var produtos = [
     },
 ]
 
+
+/**
+    <div class="product">
+        <i class="fa fa-times-circle"></i>
+        <img src="img/camiseta.png" alt="t-shirt" class="product__img">
+        <span id="p1" class="product__name"></span>
+        <span id="c1" class="product__color"></span>
+        <span id="s1" class="product__size"></span>
+        <span id="v1" class="product__value"></span>*<input type="number" name="" id=""> = <span>$216</span>
+    </div>
+ */
 function listarProdutos(){
  //Gerar o template através do array de objetos
     var template = "";
@@ -54,17 +65,18 @@ function listarProdutos(){
         template +=     '<span id="p1" class="product__name">'+produtos[i].descricao+'</span>';
         template +=     '<span id="c1" class="product__color">'+produtos[i].cor+'</span>';
         template +=     '<span id="s1" class="product__size"></span>';
-        template +=     '<span id="v1" class="product__value"><strong>R$ </strong>'+produtos[i].preco+'</span>*<input type="number" onchange="atualizarQuantidade(this.id, this.value)" value="'+produtos[i].qtd+'" name="" id="'+produtos[i].codigo+'"> = <span id="total-'+produtos[i].codigo+'"> <strong>R$ </strong>'+totalProduto+'</span>';
+        template +=     '<span id="v1" class="product__value"><strong>R$ </strong>'+produtos[i].preco+'</span>*<input type="number" onchange="atualizarQuantidade(this.id, this.value)" value="'+produtos[i].qtd+'" name="" id="'+produtos[i].codigo+'"> = <strong>R$ </strong><span id="total-'+produtos[i].codigo+'">'+totalProduto+'</span>';
         template += '</div>';
     }
 
     document.getElementById("products").innerHTML = template;
-    document.getElementById("total-geral").innerHTML = "Subtotal: <strong>R$" + totalGeral + "</strong>";
+    document.getElementById("total-geral").innerHTML = totalGeral;
     //  R$523
 }
 
 function atualizarQuantidade(_codigo, _qtd){
-    
+    var totalGeral = parseFloat(document.getElementById('total-geral').innerHTML);
+    console.log(totalGeral);
     for (var index = 0; index < produtos.length; index++) {
         
         if( produtos[index].codigo == _codigo ){
@@ -72,12 +84,22 @@ function atualizarQuantidade(_codigo, _qtd){
             produtos[index].qtd = _qtd;
             
             //atualizar o total do produto
-            var totalProduto = produtos[index].qtd * produtos[index].preco;
+            var novoTotal = parseFloat(produtos[index].qtd * produtos[index].preco);
+            console.log(novoTotal);
             var codProd = 'total-' + produtos[index].codigo;
-
-            document.getElementById(codProd).innerHTML = "<strong>R$ </strong>"+totalProduto.toFixed(2);
+            var totalAntigo = document.getElementById(codProd).innerHTML;
+            console.log(totalAntigo);
+            totalGeral = (totalGeral - totalAntigo) + novoTotal;
+            
+            document.getElementById(codProd).innerHTML = novoTotal.toFixed(2);
             //atualizar o total geral
-            console.log(produtos[index]);
+            document.getElementById('total-geral').innerHTML = totalGeral.toFixed(2);
+            
+            //(TOTAL-GERAL - TOTAL-PRODUTO-ANTIGO) + NOVO-TOTAL-PRODUTO
+
+
+            
+            // document.getElementById(codProd).innerHTML = "DSDSDS";
             break;
         }        
 
