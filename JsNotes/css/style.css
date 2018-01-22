@@ -1,0 +1,28 @@
+header {
+    height: 50px;
+    background-color: #FFCC33;
+    width: 100%;
+}
+main {
+    margin: 0 auto;
+    border: 1px solid #000;
+    width: 60%;
+    margin-top: 50px;
+    padding: 10px;
+}
+#cdn{
+    margin-left: 40%;
+}
+#tituloNota{
+    width: 50%;
+    margin: 0 auto;
+}
+#itemNota {
+    width: 40%;
+    margin: 0 auto;
+}
+#plus{
+    margin-left: 250px;
+   font-size: 18pt;
+   border: 2px double #ff0;
+}
