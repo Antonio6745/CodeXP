@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <header class="menu">
-
-    </header>
+    <header class="menu"></header>
     <main>
         <form>
             <div id="Cadastro">
-                <span id="cdn"> Cadastro de Notas</span>
+                <span id="cdn">Cadastro de Notas</span>
                 <br />
                 <br />
                 <div id="t">
@@ -30,10 +28,15 @@
                     <input type="text" class="form-control" placeholder="Item" id="itemNota">
                     <br />
 
+                    <button type="button" class="btn" onclick="CadastrarNotas()"> Cadastrar nota </button>
                 </div>
             </div>
         </form>
+        <div id="notas">
+            
+        </div>
     </main>
+    
 </body>
 
 </html>

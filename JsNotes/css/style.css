@@ -4,11 +4,14 @@ header {
     width: 100%;
 }
 main {
-    margin: 0 auto;
-    border: 1px solid #000;
+    margin: 0 auto;  
     width: 60%;
     margin-top: 50px;
+}
+form {
+    border: 1px solid #000;
     padding: 10px;
+    padding-bottom: 50px;
 }
 #cdn{
     margin-left: 40%;
@@ -24,5 +27,17 @@ main {
 #plus{
     margin-left: 250px;
    font-size: 18pt;
-   border: 2px double #ff0;
+}
+#nota {
+    font-family: 'Roboto', sans-serif;
+    width: 20%;
+    padding: 10px;;
+    border-radius: 2px;
+    background: rgb(255, 255, 141);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+    float: left;
+    margin: 50px;
+}
+.btn{
+    float: right;
 }
